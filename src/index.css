@@ -1,0 +1,906 @@
+:root {
+  /* Primary */
+  --Marine-blue: hsl(213, 96%, 18%); /* #02295a */
+  --Purplish-blue: hsl(243, 100%, 62%); /* #473dff */
+  --Pastel-blue: hsl(228, 100%, 84%); /*	#adbeff */
+  --Light-blue: hsl(206, 94%, 87%); /* #bfe2fd */
+  --Strawberry-red: hsl(354, 84%, 57%); /* #ed3548 */
+  --Success-green: #39ed35;
+  /* Neutral */
+  --Cool-gray: hsl(231, 11%, 63%); /* #9699ab */
+  --Light-gray: hsl(229, 24%, 87%); /*	#d6d9e6 */
+  --Magnolia: hsl(217, 100%, 97%); /* #f0f6ff */
+  --Alabaster: hsl(231, 100%, 99%); /* #fafcff */
+  --White: hsl(0, 0%, 100%); /* #ffffff */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+body {
+  background-color: var(--Magnolia);
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mainOuterDiv {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileTopBar {
+  display: none;
+}
+
+.mainContainer {
+  background-color: var(--White);
+  border-radius: 15px;
+  width: 940px;
+  height: 568px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  padding: 18px;
+  box-shadow: 0px 10px 25px #d6d9e680;
+}
+
+.desktopSideBar {
+  height: 100%;
+  width: 100%;
+  max-height: 568px;
+  max-width: 275px;
+  background-image: url("bg-sidebar-desktop.svg");
+  background-repeat: no-repeat;
+}
+
+.desktopSideBarContainer {
+  color: var(--White);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.step1Container,
+.step2Container,
+.step3Container,
+.step4Container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 60%;
+  margin-top: 30px;
+}
+
+.numberCircle {
+  border: 1px var(--White) solid;
+  border-radius: 18px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.numberCircle.active {
+  background-color: var(--Light-blue);
+  border: 1px var(--Light-blue) solid;
+  color: var(--Marine-blue);
+}
+
+.desktopSideBarTextContainer {
+  margin-left: 10px;
+}
+
+.desktopSideBarHeader {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--White);
+  opacity: 50%;
+  font-size: 12px;
+}
+
+.desktopSideBarText {
+  margin: 0;
+  margin-top: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  color: var(--White);
+}
+
+.mainContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.stepHeader {
+  color: var(--Marine-blue);
+  margin: 0;
+}
+
+.stepSubText {
+  color: var(--Cool-gray);
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.personalInfoContainer,
+.selectPlanContainer,
+.addOnsContainer,
+.summaryContainer {
+  padding: 40px 80px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/******************************************/
+/* Step1 Page */
+.label-error-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.name-label,
+.email-label,
+.phone-label {
+  margin-top: 25px;
+  color: var(--Marine-blue);
+}
+
+.error-message {
+  margin: 25px 0 0;
+  color: var(--Strawberry-red);
+  text-align: right;
+  padding-left: 5px;
+}
+
+.name-input,
+.email-input,
+.phone-input {
+  margin-top: 10px;
+  background-color: transparent;
+  border: 1px solid var(--Light-gray);
+  border-radius: 10px;
+  height: 48px;
+  padding-left: 15px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.name-input:hover,
+.email-input:hover,
+.phone-input:hover {
+  outline: none;
+  border: 1px solid var(--Purplish-blue);
+  cursor: pointer;
+}
+
+.name-input:focus-visible,
+.email-input:focus-visible,
+.phone-input:focus-visible {
+  outline: none;
+  border: 1px solid var(--Purplish-blue);
+  cursor: text;
+}
+
+.name-input.error,
+.email-input.error,
+.phone-input.error {
+  outline: none;
+  border: 1px solid var(--Strawberry-red);
+}
+
+.name-input.passed,
+.email-input.passed,
+.phone-input.passed {
+  outline: none;
+  border: 1px solid var(--Success-green);
+}
+
+/******************************************/
+/* Step2 Page */
+.add-ons-error-message {
+  color: var(--Strawberry-red);
+  margin: 0;
+  line-height: 20px;
+  padding-left: 5px;
+}
+
+.billingOptionContainer {
+  display: flex;
+  margin-top: 45px;
+  margin-bottom: auto;
+}
+
+.billingOption:first-of-type {
+  margin-left: 0;
+}
+
+.billingOption {
+  border: 1px solid var(--Cool-gray);
+  border-radius: 10px;
+  padding: 15px;
+  height: 160px;
+  width: 100%;
+  margin-left: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.billingOption:hover {
+  outline: none;
+  border: 1px solid var(--Purplish-blue);
+}
+
+.billingOption.active {
+  outline: none;
+  border: 1px solid var(--Purplish-blue);
+  background-color: var(--Alabaster);
+}
+
+.billingOptionTextContainer {
+  margin-right: auto;
+}
+
+.billingOptionName {
+  font-size: 16px;
+  color: var(--Marine-blue);
+  font-weight: 500;
+  margin: 0 0 10px 0;
+}
+
+.billingOptionMonthlyPrice,
+.billingOptionYearlyPrice {
+  font-size: 14px;
+  color: var(--Cool-gray);
+  font-weight: 400;
+  margin: 0 0 0 0;
+}
+
+.yearlyPriceDiscount {
+  font-size: 12px;
+  color: var(--Marine-blue);
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.billingTypeContainer {
+  background-color: var(--Alabaster);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.billingTypeMonthly {
+  margin-right: 25px;
+}
+
+.billingTypeYearly {
+  margin-left: 25px;
+}
+
+.billingTypeMonthly,
+.billingTypeYearly {
+  color: var(--Cool-gray);
+}
+
+.billingTypeMonthly.active,
+.billingTypeYearly.active {
+  color: var(--Marine-blue);
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--Marine-blue);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--White);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: var(--Marine-blue);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--Marine-blue);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/******************************************/
+/* Step3 Page */
+.addOnOptionContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-bottom: auto;
+}
+
+.addOn:first-of-type {
+  margin-top: 0;
+}
+
+.addOn {
+  border: 1px solid var(--Cool-gray);
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  align-items: center;
+}
+
+.addOn:hover {
+  border: 1px solid var(--Purplish-blue);
+}
+
+.addOn.active {
+  border: 1px solid var(--Purplish-blue);
+  background-color: var(--Alabaster);
+}
+
+.checkboxContainer {
+  margin: 15px 25px 15px 10px;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+.checkbox:checked {
+  accent-color: var(--Purplish-blue);
+}
+
+.addOnTextContainer {
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.addOnName {
+  font-size: 16px;
+  color: var(--Marine-blue);
+  font-weight: 500;
+  margin: 0 0 10px 0;
+}
+
+.addOnSubText {
+  font-size: 14px;
+  color: var(--Cool-gray);
+  font-weight: 400;
+  margin: 0 0 0 0;
+}
+
+.addOnMonthlyPrice,
+.addOnYearlyPrice {
+  color: var(--Purplish-blue);
+}
+
+/******************************************/
+/* Step4 Page */
+.summaryContentContainer {
+  background-color: #adbeff14;
+  border-radius: 10px;
+  padding: 25px;
+  margin-top: 40px;
+}
+
+.summaryPlanType,
+.summaryAddOn,
+.summaryTotalContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summaryPlanTypeName {
+  color: var(--Marine-blue);
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  padding-bottom: 10px;
+}
+
+.summaryPlanTypeName::first-letter {
+  text-transform: capitalize;
+}
+
+.summaryPlanTypeChange {
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--Cool-gray);
+  margin: 0;
+}
+
+.summaryPlanTypeChange:hover {
+  color: var(--Purplish-blue);
+}
+
+.summaryPlanTypePrice {
+  color: var(--Marine-blue);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.summaryLine {
+  height: 1px;
+  background-color: var(--Light-gray);
+  margin: 25px 0;
+}
+
+.summaryAddOn {
+  padding-bottom: 20px;
+}
+
+.summaryAddOn:last-of-type {
+  padding: 0;
+}
+
+.summaryAddOnName {
+  font-size: 14px;
+  color: var(--Cool-gray);
+  margin: 0;
+}
+
+.summaryAddOnPrice {
+  color: var(--Marine-blue);
+  margin: 0;
+}
+
+.summaryTotalContainer {
+  padding: 30px 25px;
+}
+
+.summaryTotalText {
+  font-size: 14px;
+  color: var(--Cool-gray);
+  margin: 0;
+}
+
+.summaryTotalPrice {
+  color: var(--Purplish-blue);
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/******************************************/
+/* Step5 Page */
+.thankYouContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 80px 20px 80px;
+}
+
+.thankYouContainer a {
+  cursor: default;
+}
+
+.thankYouStepHeader {
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--Marine-blue);
+  margin: 35px 0 20px 0;
+}
+
+.thankYouStepSubText {
+  text-align: center;
+  color: var(--Cool-gray);
+  margin: 0;
+  line-height: 24px;
+}
+
+/******************************************/
+/* NotFoundPage */
+.notFoundPageContainer {
+  padding: 40px 80px 20px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.notFoundPageBackButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
+
+.notFoundPageBackButton {
+  color: var(--White);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: var(--Marine-blue);
+  border: 1px solid var(--Marine-blue);
+  padding: 10px 15px;
+}
+
+.notFoundPageBackButton:hover {
+  background-color: #02295ad9;
+  border: 1px solid #032a59d9;
+}
+
+/******************************************/
+
+.desktopBtnContainer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.desktopBackBtn,
+.mobileBackBtn {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  color: var(--Cool-gray);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.desktopBackBtn:hover,
+.mobileBackBtn:hover {
+  color: var(--Marine-blue);
+}
+
+.desktopBackBtn {
+  font-size: 16px;
+}
+
+.mobileBackBtn {
+  font-size: 14px;
+}
+
+.mobileNextStepBtn,
+.mobileConfirmBtn {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 30px;
+  font-size: 14px;
+}
+
+.desktopNextStepBtn,
+.mobileNextStepBtn,
+.desktopConfirmBtn,
+.mobileConfirmBtn {
+  color: var(--White);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.desktopNextStepBtn,
+.mobileNextStepBtn {
+  background-color: var(--Marine-blue);
+  border: 1px solid var(--Marine-blue);
+}
+
+.desktopNextStepBtn:hover,
+.mobileNextStepBtn:hover {
+  background-color: #02295ad9;
+  border: 1px solid #02295ad9;
+}
+
+.desktopConfirmBtn,
+.mobileConfirmBtn {
+  background-color: var(--Purplish-blue);
+  border: 1px solid var(--Purplish-blue);
+}
+
+.desktopConfirmBtn:hover,
+.mobileConfirmBtn:hover {
+  background-color: #473dff99;
+  border: 1px solid #473dff99;
+}
+
+.desktopNextStepBtn,
+.desktopConfirmBtn {
+  height: 48px;
+  width: 125px;
+}
+
+.mobileNextStepBtn,
+.mobileConfirmBtn {
+  height: 40px;
+  padding: 0 15px;
+}
+
+.mobileBottomBar {
+  display: none;
+}
+
+footer {
+  background-color: var(--Marine-blue);
+  color: var(--Pastel-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer a {
+  color: var(--Pastel-blue);
+}
+
+footer a:hover {
+  color: var(--Purplish-blue);
+}
+
+/******************************************/
+/* Tablet + Mobile View */
+
+@media screen and (max-width: 1020px) {
+  .mobileTopBar {
+    display: block;
+    position: fixed;
+    background-size: contain;
+    height: 100%;
+    width: 100%;
+    background-image: url("bg-sidebar-mobile.svg");
+    background-repeat: no-repeat;
+  }
+
+  .mobileTopBarContainer {
+    display: flex;
+    justify-content: center;
+    margin: 40px 100px;
+    color: var(--White);
+  }
+
+  .numberCircle:first-of-type {
+    margin-left: 0;
+  }
+
+  .numberCircle {
+    margin-left: 3vw;
+    border-radius: 16px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .mainContainer {
+    margin-left: 4%;
+    margin-right: 4%;
+    position: absolute;
+    width: 92%;
+    border-radius: 10px;
+    padding: 0px;
+    height: auto;
+    z-index: 1;
+    margin-top: 14vh;
+  }
+
+  .desktopSideBar {
+    display: none;
+  }
+
+  .stepHeader {
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  .personalInfoContainer,
+  .selectPlanContainer,
+  .addOnsContainer,
+  .summaryContainer {
+    padding: 40px 25px 30px 25px;
+  }
+
+  /******************************************/
+  /* Step1 Page */
+  .name-label,
+  .email-label,
+  .phone-label,
+  .error-message {
+    font-size: 12px;
+    margin-top: 15px;
+  }
+
+  .name-input,
+  .email-input,
+  .phone-input {
+    height: 40px;
+    border-radius: 5px;
+    margin-top: 5px;
+  }
+
+  /******************************************/
+  /* Step2 Page */
+  .add-ons-error-message {
+    font-size: 14px;
+  }
+
+  .selectPlanContainer {
+    display: block;
+  }
+
+  .billingOptionContainer {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    margin-top: 25px;
+  }
+
+  .billingOption:first-of-type {
+    margin-top: 0;
+  }
+
+  .billingOption {
+    margin-top: 12px;
+    margin-left: 0;
+    width: 90%;
+    height: 15%;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .billingTypeContainer {
+    margin-top: 25px;
+  }
+
+  .iconContainer {
+    margin: 0 15px auto 0;
+  }
+
+  /******************************************/
+  /* Step3 Page */
+  .checkboxContainer {
+    margin: 5px 15px 5px 0;
+  }
+  .addOnName {
+    font-size: 14px;
+  }
+
+  .addOnSubText,
+  .addOnMonthlyPrice,
+  .addOnYearlyPrice {
+    font-size: 12px;
+  }
+
+  /******************************************/
+  /* Step4 Page */
+  .summaryPlanTypeName,
+  .summaryPlanTypePrice,
+  .summaryAddOnPrice {
+    font-size: 14px;
+  }
+
+  .summaryTotalPrice {
+    font-size: 16px;
+  }
+
+  .summaryContentContainer {
+    margin-top: 10px;
+    padding: 20px 15px;
+  }
+
+  .summaryLine {
+    margin: 15px 0;
+  }
+
+  .summaryTotalContainer {
+    padding: 30px 15px 0;
+  }
+
+  /******************************************/
+  /* Step5 Page */
+
+  .thankYouContainer {
+    padding: 60px 25px 80px;
+  }
+
+  .thankYouContainer svg {
+    transform: scale(0.7);
+  }
+
+  .thankYouStepHeader {
+    font-size: 24px;
+    margin: 15px 0 15px 0;
+  }
+
+  /******************************************/
+
+  .desktopBtnContainer {
+    display: none;
+  }
+
+  .mobileBottomBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    background-color: var(--White);
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding: 15px;
+    margin-right: 15px;
+    z-index: 1;
+    border-top: 1px solid var(--Magnolia);
+  }
+}
+
+/******************************************/
+.hide {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+}
